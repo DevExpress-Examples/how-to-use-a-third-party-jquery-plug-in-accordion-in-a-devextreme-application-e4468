@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>eb11b7f3-715d-460c-84dc-6c9123f6f1e1</ProjectGuid>
+    <AutoAssignPort>True</AutoAssignPort>
+    <RunInSimulator>False</RunInSimulator>
+    <ApplicationPage>app.html</ApplicationPage>
+    <Name>DxSample</Name>
+    <RootNamespace>DxSample</RootNamespace>
+    <DebugSitePortNumber>50000</DebugSitePortNumber>
+    <UseWebDev>False</UseWebDev>
+    <DefaultDevice>iPhone</DefaultDevice>
+    <DeviceOrientation>Portrait</DeviceOrientation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="app.js" />
+    <Content Include="app.html" />
+    <Content Include="app.css" />
+    <Content Include="css\dx.common.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.android.holo-dark.css" />
+    <Content Include="css\dx.desktop.default.css" />
+    <Content Include="css\dx.ios.default.css" />
+    <Content Include="css\dx.win8.black.css" />
+    <Content Include="css\dx.win8.white.css" />
+    <Content Include="css\dx.win8.black.small.css" />
+    <Content Include="data\db.js" />
+    <Content Include="jqueryui\images\ui-bg_diagonals-thick_18_b81900_40x40.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-bg_diagonals-thick_20_666666_40x40.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-bg_flat_10_000000_40x100.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-bg_glass_100_f6f6f6_1x400.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-bg_glass_100_fdf5ce_1x400.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-bg_glass_65_ffffff_1x400.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-bg_gloss-wave_35_f6a828_500x100.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-bg_highlight-soft_75_ffe45c_1x100.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-icons_222222_256x240.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-icons_228ef1_256x240.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-icons_ef8c08_256x240.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-icons_ffd27a_256x240.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\images\ui-icons_ffffff_256x240.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\jquery-ui-1.10.0.custom.min.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="jqueryui\jquery-ui-1.10.0.custom.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Navbar\NavbarLayout.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Navbar\NavbarLayout.css" />
+    <Content Include="layouts\Navbar\NavbarLayout.html" />
+    <Content Include="js\dx.all.js" />
+    <Content Include="js\globalize.js" />
+    <Content Include="js\jquery-1.7.2.intellisense.js" />
+    <Content Include="js\jquery-1.9.1.min.js" />
+    <Content Include="js\knockout-2.2.1.js" />
+    <Content Include="views\index.dxview" />
+    <Content Include="views\index.css" />
+    <Content Include="views\index.js" />
+    <Content Include="views\about.html" />
+    <Content Include="app.config.js" />
+    <Content Include="web.config">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="data\" />
+    <Folder Include="jqueryui\" />
+    <Folder Include="jqueryui\images\" />
+    <Folder Include="js\" />
+    <Folder Include="layouts\" />
+    <Folder Include="layouts\Navbar\" />
+    <Folder Include="views\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <Target Name="Build">
+    <!--
+    <Message Text="'$(MSBuildToolsPath)'"></Message>
+    -->
+    <Message Text="Build JSProject '$(MSBuildProjectFile)':" Importance="high">
+    </Message>
+    <Message Text="Copying refenecses to output dir..." Importance="high" />
+    <MSBuild Targets="Build" Projects="@(ProjectReference)" Properties="OutputPath=$([System.IO.Path]::GetFullPath('$(OutputPath)'))">
+    </MSBuild>
+    <Message Text="Copying files to output dir..." Importance="high" />
+    <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutputPath)%(RelativeDir)%(Filename)%(Extension)')" />
+    <Message Text="Finished Build JSProject '$(MSBuildProjectFile)'." Importance="high">
+    </Message>
+  </Target>
+  <Target Name="CreateManifestResourceNames" Condition="'@(ResxWithNoCulture)@(ResxWithCulture)@(NonResxWithNoCulture)@(NonResxWithCulture)'!=''" />
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build">
+  </Target>
+  <Target Name="Clean">
+    <!--
+    <Message Text="Cleaning Output files..." Importance="high" />
+    <Delete Files="@([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+    -->
+    <Message Text="Cleaning Output dir ($([System.IO.Path]::GetFullPath('$(OutputPath)')))..." Importance="high" />
+    <RemoveDir Directories="$([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+  </Target>
+</Project>
