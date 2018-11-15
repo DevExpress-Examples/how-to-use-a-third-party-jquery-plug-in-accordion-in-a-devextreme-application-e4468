@@ -1,3 +1,7 @@
+<!-- default file list -->
+*Files to look at*:
+
+<!-- default file list end -->
 # How to use a third-party jQuery plug-in (accordion) in a DevExtreme application
 
 
