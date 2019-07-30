@@ -4,7 +4,7 @@
 <!-- default file list end -->
 # How to use a third-party jQuery plug-in (accordion) in a DevExtreme application
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/e4468)**
+**[[Run Online]](https://codecentral.devexpress.com/e4468/)**
 <!-- run online end -->
 
 
